@@ -26,11 +26,20 @@ namespace OrderManagementApp
         public void PrintOrderDetails(int orderId)
         {
             var order = _dbContext.Orders.Include(o => o.Customer).FirstOrDefault(o => o.Id == orderId);
-            Console.WriteLine("Order Id: " + order.Id);
-            Console.WriteLine("Total: " + order.Total);
-            Console.WriteLine("Express Shipping: " + (order.IsExpress ? "Yes" : "No"));
+            PrintOrderId(order);
+            PrintTotal(order);
+            PrintExpressShipping(order);
             order.Customer.PrintEmail();
         }
+
+        private static void PrintExpressShipping(Order? order) =>
+            Console.WriteLine("Express Shipping: " + (order.IsExpress ? "Yes" : "No"));
+
+        private static void PrintTotal(Order? order) =>
+            Console.WriteLine("Total: " + order.Total);
+
+        private static void PrintOrderId(Order? order) =>
+            Console.WriteLine("Order Id: " + order.Id);
 
         public double CalculateFinalPrice(Order order)
         {

@@ -2,13 +2,6 @@
 
 namespace LabWork6
 {
-    public class NegativeNumberException : Exception
-    {
-        public NegativeNumberException() : base("Отрицательное число"){ }
-        public NegativeNumberException(string message) : base(message) { }
-        public NegativeNumberException(string message, Exception innerException) : base(message, innerException) { }
-    }
-
     class Program
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
@@ -25,22 +18,7 @@ namespace LabWork6
 
                 int result = num1 / num2;
                 Console.WriteLine($"Результат деления: {result}");
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Ошибка: введен текст вместо числа");
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine("Ошибка: деление на 0");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
-            }
 
-            try
-            {
                 Console.WriteLine("Введите возраст: ");
                 int age = int.Parse(Console.ReadLine());
 
@@ -49,11 +27,30 @@ namespace LabWork6
                     throw new NegativeNumberException();
                 }
             }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Ошибка: введен текст вместо числа");
+                logger.Error(ex, "Ошибка: введен текст вместо числа");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("Ошибка: деление на 0");
+                logger.Error(ex, "Ошибка: деление на 0");
+            }
             catch (NegativeNumberException ex)
             {
-                Console.WriteLine("Отрицательное число");
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                logger.Error(ex, $"Stack Trace: {ex.StackTrace}");
             }
         }
     }
-
+    public class NegativeNumberException : Exception
+    {
+        public NegativeNumberException() : base("Отрицательное число") { }
+        public NegativeNumberException(string message) : base(message) { }
+    }
 }
