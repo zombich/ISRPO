@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CoursesApi/CoursesApi.csproj" Id="3acfc880-fbb7-4298-b13a-5657b081cef3" />
+  <Project Path="CoursesDatabaseLibrary/CoursesDatabaseLibrary.csproj" />
+  <Project Path="CoursesWebApp/CoursesWebApp.csproj" />
+</Solution>

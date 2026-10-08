@@ -1,0 +1,1 @@
+Scaffold-DbContext "DataSource=C:\\Temp\\ispp31\\ISRPO\\LabWork1\\DatabaseDiagram\\courses.db" Microsoft.EntityFrameworkCore.Sqlite -ContextDir Contexts -OutputDir Models -Force
