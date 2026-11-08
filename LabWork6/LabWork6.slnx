@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="LabWork6/LabWork6.csproj" />
+  <Project Path="Task3/Task3.csproj" Id="a29606c8-f02d-4791-ae92-c740a65599cc" />
+  <Project Path="Task4/Task4.csproj" Id="536d4041-15cc-4917-8577-3a979c99d7d9" />
 </Solution>
